@@ -12,6 +12,9 @@ export default function MainLayout() {
       <Stack.Screen name="check-in" />
       <Stack.Screen name="goals" />
       <Stack.Screen name="recommendations" />
+      <Stack.Screen name="statistics" />
+      <Stack.Screen name="weekly-summary" />
+      <Stack.Screen name="settings" />
       <Stack.Screen name="profile" />
     </Stack>
   );

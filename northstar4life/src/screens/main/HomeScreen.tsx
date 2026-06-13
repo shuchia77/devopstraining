@@ -109,14 +109,28 @@ export function HomeScreen() {
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.actionsGrid}>
             <Button
-              title="📝 Daily Check-in"
+              title="📝 Check-in"
               onPress={() => router.push('/(main)/check-in')}
               variant="secondary"
               style={styles.actionButton}
             />
             <Button
-              title="🎯 My Goals"
+              title="🎯 Goals"
               onPress={() => router.push('/(main)/goals')}
+              variant="secondary"
+              style={styles.actionButton}
+            />
+          </View>
+          <View style={styles.actionsGrid}>
+            <Button
+              title="📊 Stats"
+              onPress={() => router.push('/(main)/statistics')}
+              variant="secondary"
+              style={styles.actionButton}
+            />
+            <Button
+              title="⚙️ Settings"
+              onPress={() => router.push('/(main)/settings')}
               variant="secondary"
               style={styles.actionButton}
             />
@@ -129,6 +143,19 @@ export function HomeScreen() {
             style={styles.fullButton}
           />
         </View>
+
+        <TouchableOpacity onPress={() => router.push('/(main)/weekly-summary')}>
+          <Card variant="elevated" style={styles.weeklyCard}>
+            <View style={styles.weeklyHeader}>
+              <Text style={styles.weeklyEmoji}>📊</Text>
+              <View style={styles.weeklyContent}>
+                <Text style={styles.weeklyTitle}>View Weekly Summary</Text>
+                <Text style={styles.weeklySubtitle}>See your insights & trends</Text>
+              </View>
+              <Text style={styles.weeklyArrow}>→</Text>
+            </View>
+          </Card>
+        </TouchableOpacity>
 
         {lifeScore && lifeScore.overallScore < 50 && (
           <Card style={styles.motivationCard}>
@@ -258,6 +285,36 @@ const styles = StyleSheet.create({
   },
   fullButton: {
     marginBottom: 0,
+  },
+  weeklyCard: {
+    marginHorizontal: 16,
+    marginBottom: 20,
+  },
+  weeklyHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  weeklyEmoji: {
+    fontSize: 28,
+  },
+  weeklyContent: {
+    flex: 1,
+  },
+  weeklyTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: Colors.text,
+    marginBottom: 2,
+  },
+  weeklySubtitle: {
+    fontSize: 12,
+    color: Colors.textSecondary,
+  },
+  weeklyArrow: {
+    fontSize: 18,
+    color: Colors.primary,
+    fontWeight: '600',
   },
   motivationCard: {
     marginHorizontal: 16,
