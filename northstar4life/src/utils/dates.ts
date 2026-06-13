@@ -1,8 +1,8 @@
-import { formatDate, formatDistanceToNow, parseISO } from 'date-fns';
+import { format, formatDistanceToNow, parseISO } from 'date-fns';
 
 export function formatDateShort(dateString: string): string {
   try {
-    return formatDate(parseISO(dateString), 'MMM dd, yyyy');
+    return format(parseISO(dateString), 'MMM dd, yyyy');
   } catch {
     return dateString;
   }
@@ -10,7 +10,7 @@ export function formatDateShort(dateString: string): string {
 
 export function formatDateFull(dateString: string): string {
   try {
-    return formatDate(parseISO(dateString), 'EEEE, MMMM dd, yyyy');
+    return format(parseISO(dateString), 'EEEE, MMMM dd, yyyy');
   } catch {
     return dateString;
   }

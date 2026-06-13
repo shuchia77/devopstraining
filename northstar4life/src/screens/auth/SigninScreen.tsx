@@ -76,7 +76,7 @@ export function SigninScreen() {
 
           {authError && <Text style={styles.generalError}>{authError}</Text>}
 
-          <TouchableOpacity onPress={() => router.push('/auth/forgot-password')}>
+          <TouchableOpacity onPress={() => router.push('/(auth)/forgot-password')}>
             <Text style={styles.forgotPassword}>Forgot password?</Text>
           </TouchableOpacity>
 
@@ -92,7 +92,7 @@ export function SigninScreen() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => router.push('/auth/signup')}>
+          <TouchableOpacity onPress={() => router.push('/(auth)/signup')}>
             <Text style={styles.link}>Create one</Text>
           </TouchableOpacity>
         </View>

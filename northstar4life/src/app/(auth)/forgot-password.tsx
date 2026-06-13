@@ -47,7 +47,7 @@ export default function ForgotPasswordScreen() {
               </Text>
               <Button
                 title="Back to Sign In"
-                onPress={() => router.push('/auth/signin')}
+                onPress={() => router.push('/(auth)/signin')}
                 variant="primary"
                 size="large"
                 style={styles.button}

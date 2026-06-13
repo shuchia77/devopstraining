@@ -36,14 +36,14 @@ export function WelcomeScreen() {
         <View style={styles.actions}>
           <Button
             title="Create Account"
-            onPress={() => router.push('/auth/signup')}
+            onPress={() => router.push('/(auth)/signup')}
             variant="primary"
             size="large"
             style={styles.button}
           />
           <Button
             title="Sign In"
-            onPress={() => router.push('/auth/signin')}
+            onPress={() => router.push('/(auth)/signin')}
             variant="secondary"
             size="large"
             style={styles.button}
