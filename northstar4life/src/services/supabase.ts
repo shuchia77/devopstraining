@@ -1,5 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { v4 as uuid } from 'uuid';
+
+// Simple UUID v4 generator fallback
+function generateUUID(): string {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 // Mock in-memory storage fallback
 const mockDB: Record<string, any> = {
@@ -19,7 +27,7 @@ const MOCK_USER = {
 export const supabase = {
   auth: {
     async signUp({ email, password, options }: any) {
-      const userId = uuid();
+      const userId = generateUUID();
       const user = { id: userId, email, created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
       mockDB.users[userId] = { ...MOCK_USER, id: userId, email };
       await AsyncStorage.setItem('auth_user', JSON.stringify(user));
@@ -60,7 +68,7 @@ export const supabase = {
     insert: (data: any) => ({
       select: () => ({
         single: async () => {
-          const id = uuid();
+          const id = generateUUID();
           const record = { id, ...data, created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
           if (!mockDB[table]) mockDB[table] = [];
           if (Array.isArray(mockDB[table])) {
@@ -202,7 +210,7 @@ export const checkInService = {
   async createCheckIn(userId: string, scores: Record<string, number>, notes: string) {
     const today = new Date().toISOString().split('T')[0];
     const checkIn = {
-      id: uuid(),
+      id: generateUUID(),
       user_id: userId,
       date: today,
       scores,
@@ -245,7 +253,7 @@ export const checkInService = {
 export const goalService = {
   async createGoal(userId: string, pillar: string, title: string, description: string, targetDate: string) {
     const goal = {
-      id: uuid(),
+      id: generateUUID(),
       user_id: userId,
       pillar,
       title,
